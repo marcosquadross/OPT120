@@ -24,6 +24,6 @@ CREATE TABLE IF NOT EXISTS user_activity (
 	foreign key(activity_id) references activity(id)
 );
 
-select * from atividade;
+select * from user;
 select * from activity;
 select * from user_activity;
