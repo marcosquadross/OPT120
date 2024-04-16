@@ -23,6 +23,27 @@ class UserActivityController {
         });
     }
 
+    listUserActivitiesByUser(req, res) {
+        const { user_id } = req.params;
+        db.query('SELECT * FROM user_activity WHERE user_id = ?', [user_id], (err, results, fields) => {
+            if (err) {
+                console.error('Erro ao executar consulta SQL:', err);
+                return;
+            }
+            res.status(200).json(results);
+        });
+    }
+
+    listUserActivitiesByActivity(req, res) {
+        const { activity_id } = req.params;
+        db.query('SELECT * FROM user_activity WHERE activity_id = ?', [activity_id], (err, results, fields) => {
+            if (err) {
+                console.error('Erro ao executar consulta SQL:', err);
+                return;
+            }
+            res.status(200).json(results);
+        });
+    }
 
     updateUserActivity(req, res) {
         const { user_id, activity_id, delivery_date, score } = req.body;
